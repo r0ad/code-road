@@ -5,7 +5,7 @@ export default defineConfig({
   title: "编程之路",
   description: "来自程序员nine的探索与实践，持续迭代中。",
   srcDir: 'src',
-  base: '/code-road/',
+  // base: '/code-road/',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
