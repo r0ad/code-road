@@ -20,7 +20,6 @@
   },
   "devDependencies": {
     "@nolebase/vitepress-plugin-enhanced-readabilities": "^2.5.0",
-    "@nolebase/vitepress-plugin-git-changelog": "^2.5.0",
     "@types/body-scroll-lock": "^3.1.2",
     "@types/markdown-it": "^14.1.1",
     "@types/node": "^20.14.1",
