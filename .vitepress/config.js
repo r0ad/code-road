@@ -18,18 +18,14 @@ const vitepressSidebarOptions = {
        * 有关详细说明，请参阅下面的链接：
        * https://vitepress-sidebar.cdget.com/zhHans/guide/api
        */
-      documentRootPath: '/',
-      scanStartPath: 'src',
-      // basePath: null,
-      // resolvePath: null,
+      documentRootPath: 'src',
+      resolvePath: './',
+      basePath: '/',
       useTitleFromFrontmatter: true,
       useTitleFromFileHeading: true,
       // frontmatterTitleFieldName: 'title',
       useFolderTitleFromIndexFile: true,
       debugPrint: true,
-      prefixSeparator: '.',
-      sortMenusByFrontmatterOrder: true
-
 
 };
 
@@ -91,25 +87,7 @@ export default defineConfig({
       { text: '关于', link: '/about' }
     ],
 
-    sidebar: [
-      {
-        "text": "关于编程之路",
-        "link": "about"
-      },
-      {
-        "text": "Spring6全攻略",
-        "items": [
-          {
-            "text": "为什么从源码学习Spring6？",
-            "link": "spring6-guide/00-intro"
-          },
-          {
-            "text": "Spring中BeanFacory和ApplicationContext的功能与实现",
-            "link": "spring6-guide/01-Spring中BeanFacory和ApplicationContext的功能与实现"
-          }
-        ]
-      }
-    ],
+    sidebar: generateSidebar(vitepressSidebarOptions),
     socialLinks: [
       { icon: 'github', link: 'https://github.com/r0ad/code-road' }
     ],
