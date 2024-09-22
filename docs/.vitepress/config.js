@@ -15,7 +15,7 @@ const docRoot = 'docs';
  * 侧边栏生成插件配置
  */
 const commonSidebarConfig = {
-  /*
+    /*
        * 有关详细说明，请参阅下面的链接：
        * https://vitepress-sidebar.cdget.com/zhHans/guide/api
        */
@@ -52,6 +52,7 @@ export default defineConfig({
   title: "编程之路",
   description: "来自程序员nine的探索与实践，持续迭代中。",
   srcDir: "",
+  outDir: '../docs-dist',
   lang: defaultLocale,
   lastUpdated: true,
   cleanUrls: true,
