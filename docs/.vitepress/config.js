@@ -10,17 +10,18 @@ const defineSupportLocales = [
   { label: defaultLocale, translateLocale: defaultLocale }
 ];
 
+const docRoot = 'docs';
 /**
  * 侧边栏生成插件配置
  */
-const vitepressSidebarOptions = {
+const commonSidebarConfig = {
   /*
        * 有关详细说明，请参阅下面的链接：
        * https://vitepress-sidebar.cdget.com/zhHans/guide/api
        */
-      documentRootPath: 'src',
-      resolvePath: './',
-      basePath: '/',
+      // documentRootPath: docRoot,
+      // scanStartPath:docRoot,
+      // resolvePath: '/',
       useTitleFromFrontmatter: true,
       useTitleFromFileHeading: true,
       // frontmatterTitleFieldName: 'title',
@@ -50,7 +51,7 @@ const viteConfig = {
 export default defineConfig({
   title: "编程之路",
   description: "来自程序员nine的探索与实践，持续迭代中。",
-  srcDir: 'src',
+  srcDir: "",
   lang: defaultLocale,
   lastUpdated: true,
   cleanUrls: true,
@@ -86,8 +87,16 @@ export default defineConfig({
       { text: '首页', link: '/' },
       { text: '关于', link: '/about' }
     ],
-
-    sidebar: generateSidebar(vitepressSidebarOptions),
+    sidebar: generateSidebar([
+      ...[defaultLocale].map((lang) => {
+        return {
+          ...commonSidebarConfig,
+          documentRootPath: defaultLocale === lang ? `/${docRoot}` : `/${docRoot}/${lang}`,
+          resolvePath: defaultLocale === lang ? '/' : `/${lang}/`,
+          ...(defaultLocale === lang ? {} : { basePath: `/${lang}/` })
+        };
+      })
+    ]),
     socialLinks: [
       { icon: 'github', link: 'https://github.com/r0ad/code-road' }
     ],

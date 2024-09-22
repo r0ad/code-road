@@ -4,9 +4,9 @@
   },
   "type": "module",
   "scripts": {
-    "dev": "vitepress",
-    "build": "vitepress build",
-    "preview": "vitepress preview",
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "preview": "vitepress preview docs",
     "preinstall": "npx only-allow pnpm",
     "type": "vue-tsc --noEmit"
   },

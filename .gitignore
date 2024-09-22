@@ -98,7 +98,8 @@ dist/
 # vitepress build output
 .vitepress/dist
 .vitepress/cache
-
+cache
+dist
 # Serverless directories
 .serverless/
 
