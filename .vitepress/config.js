@@ -55,7 +55,7 @@ export default defineConfig({
   title: "编程之路",
   description: "来自程序员nine的探索与实践，持续迭代中。",
   srcDir: 'src',
-  lang: 'zh-CN',
+  lang: defaultLocale,
   lastUpdated: true,
   cleanUrls: true,
   metaChunk: true,
@@ -91,7 +91,25 @@ export default defineConfig({
       { text: '关于', link: '/about' }
     ],
 
-    sidebar: generateSidebar(vitepressSidebarOptions),
+    sidebar: [
+      {
+        "text": "关于编程之路",
+        "link": "about"
+      },
+      {
+        "text": "Spring6全攻略",
+        "items": [
+          {
+            "text": "为什么从源码学习Spring6？",
+            "link": "spring6-guide/00-intro"
+          },
+          {
+            "text": "Spring中BeanFacory和ApplicationContext的功能与实现",
+            "link": "spring6-guide/01-Spring中BeanFacory和ApplicationContext的功能与实现"
+          }
+        ]
+      }
+    ],
     socialLinks: [
       { icon: 'github', link: 'https://github.com/r0ad/code-road' }
     ],
