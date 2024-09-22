@@ -1,6 +1,18 @@
 import { defineConfig } from 'vitepress'
 import { generateSidebar } from 'vitepress-sidebar';
+import { generateI18nLocale, generateI18nSearch } from 'vitepress-i18n';
 
+/**
+ * 多语言配置
+ */
+const defaultLocale = 'zhHans';
+const defineSupportLocales = [
+  { label: defaultLocale, translateLocale: defaultLocale }
+];
+
+/**
+ * 侧边栏生成插件配置
+ */
 const vitepressSidebarOptions = {
   /*
        * 有关详细说明，请参阅下面的链接：
@@ -14,38 +26,11 @@ const vitepressSidebarOptions = {
       useTitleFromFileHeading: true,
       // frontmatterTitleFieldName: 'title',
       useFolderTitleFromIndexFile: true,
-      // useFolderLinkFromIndexFile: false,
-      // hyphenToSpace: true,
-      // underscoreToSpace: true,
-      // capitalizeFirst: false,
-      // capitalizeEachWords: false,
-      // collapsed: true,
-      // collapseDepth: 2,
-      // sortMenusByName: false,
-      // sortMenusByFrontmatterOrder: false,
-      // sortMenusByFrontmatterDate: false,
-      // sortMenusOrderByDescending: false,
-      // sortMenusOrderNumericallyFromTitle: false,
-      // sortMenusOrderNumericallyFromLink: false,
-      // sortFolderTo: null,
-      // frontmatterOrderDefaultValue: 0,
-      // manualSortFileNameByPriority: ['first.md', 'second', 'third.md'],
-      // removePrefixAfterOrdering: false,
-      // prefixSeparator: '.',
-      // excludeFiles: ['first.md', 'secret.md'],
-      // excludeFilesByFrontmatterFieldName: 'exclude',
-      // excludeFolders: ['secret-folder'],
-      // includeDotFiles: false,
-      // includeRootIndexFile: false,
-      // includeFolderIndexFile: false,
-      // includeEmptyFolder: false,
-      // rootGroupText: 'Contents',
-      // rootGroupLink: 'https://github.com/jooy2',
-      // rootGroupCollapsed: false,
-      // convertSameNameSubFileToGroupIndexPage: false,
-      // folderLinkNotIncludesFileName: false,
-      // keepMarkdownSyntaxFromTitle: false,
-      // debugPrint: false,
+      debugPrint: true,
+      prefixSeparator: '.',
+      sortMenusByFrontmatterOrder: true
+
+
 };
 
 /**
@@ -71,18 +56,15 @@ export default defineConfig({
   description: "来自程序员nine的探索与实践，持续迭代中。",
   srcDir: 'src',
   lang: 'zh-CN',
+  lastUpdated: true,
+  cleanUrls: true,
+  metaChunk: true,
   // base: '/code-road/',
   vite: viteConfig,
   themeConfig: {
     search: {
       provider: 'local',
       options: {
-        _render(src, env, md) {
-          const html = md.render(src, env)
-          if (env.frontmatter?.title)
-            return md.render(`# ${env.frontmatter.title}`) + html
-          return html
-        },
         locales: {
           zh: {
             translations: {
@@ -110,9 +92,16 @@ export default defineConfig({
     ],
 
     sidebar: generateSidebar(vitepressSidebarOptions),
-
     socialLinks: [
       { icon: 'github', link: 'https://github.com/r0ad/code-road' }
-    ]
-  }
+    ],
+    footer: {
+      message: 'Released under the CC0 License',
+      copyright: '© <a href="https://github.com/r0ad">r0ad</a>'
+    }
+  },
+  locales: generateI18nLocale({
+    defineLocales: defineSupportLocales,
+    rootLocale: defaultLocale,
+  })
 })
