@@ -104,6 +104,10 @@ export default defineConfig({
     footer: {
       message: 'Released under the CC0 License',
       copyright: '© <a href="https://github.com/r0ad">r0ad</a>'
+    },
+    editLink: {
+      pattern: 'https://github.com/r0ad/code-road/edit/master/docs/:path',
+      // text: 'Edit this page on GitHub'
     }
   },
   locales: generateI18nLocale({
