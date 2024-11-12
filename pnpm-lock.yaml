@@ -20,6 +20,9 @@ importers:
       gsap:
         specifier: ^3.12.5
         version: 3.12.5
+      vitepress-boot-starter:
+        specifier: workspace:^
+        version: link:packages/vitepress-boot-starter
     devDependencies:
       '@nolebase/vitepress-plugin-enhanced-readabilities':
         specifier: ^2.5.0
@@ -42,15 +45,15 @@ importers:
       vitepress-i18n:
         specifier: ^1.0.6
         version: 1.0.6
-      vitepress-sidebar:
-        specifier: ^1.27.0
-        version: 1.27.0
-      vue:
-        specifier: ^3.5.0
-        version: 3.5.7(typescript@5.6.2)
       vue-tsc:
         specifier: ^2.0.29
         version: 2.1.6(typescript@5.6.2)
+
+  packages/vitepress-boot-starter:
+    devDependencies:
+      vitepress-sidebar:
+        specifier: ^1.27.0
+        version: 1.27.0
 
 packages:
 

@@ -4,15 +4,15 @@
  */
 
 
-import { generateSidebar } from 'vitepress-sidebar';
-import { generateI18nLocale, generateI18nSearch } from 'vitepress-i18n';
+import { sidebarInstall } from './plugin/sidebar';
+// import { generateI18nLocale, generateI18nSearch } from 'vitepress-i18n';
 
-export const init = (app)=>{
+export const boot = (app)=>{
 
     // vitepress-i18n
 
     // vitepress-sidebar
-
+    sidebarInstall(app)
     // @nolebase/vitepress-plugin-enhanced-readabilities
     
 

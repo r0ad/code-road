@@ -1,4 +1,6 @@
 /**
  * init函数
  */
-export {init} from "./init"
+import {boot} from "./init"
+
+export default boot
