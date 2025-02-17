@@ -60,6 +60,7 @@ export default defineConfig({
   // base: '/code-road/',
   vite: viteConfig,
   themeConfig: {
+    logo: '/faviconsmall.webp',
     search: {
       provider: 'local',
       options: {
@@ -86,6 +87,7 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '首页', link: '/' },
+      { text: '规划', link: '/plan' },
       { text: '关于', link: '/about' }
     ],
     sidebar: generateSidebar([
@@ -102,7 +104,7 @@ export default defineConfig({
       { icon: 'github', link: 'https://github.com/r0ad/code-road' }
     ],
     footer: {
-      message: 'Released under the CC0 License',
+      message: 'a coder\'s try ',
       copyright: '© <a href="https://github.com/r0ad">r0ad</a>'
     }
   },
