@@ -19,22 +19,22 @@ hero:
 
 features:
   - title: 技术路线
-    details: 初级开发 → 高级开发 → 技术专家/架构师 → 行业权威
+    details: 一条路走到底。<br/>初级开发|高级开发|技术专家/架构师|行业权威|更多
     icon: 💻⚙️🧠
     link: /expert/path
     linkText: 探索更多
   - title: 管理路线
-    details: 开发组长 → 技术经理 → 研发总监 → CTO
+    details: 团队协作。<br/>开发组长|技术经理|研发总监|CTO|更多
     icon: 💼📈🤝
     link: /manage/path
     linkText: 探索更多      
   - title: 转型路线
-    details: 产品经理|解决方案架构师|数据科学家|AI工程师|更多
+    details: 找到更适合的。<br/>产品经理|解决方案架构师|数据科学家|AI工程师|更多
     icon: 🔄🌐🎯
     link: /cross/path
     linkText: 探索更多      
   - title: 一人公司
-    details: 也是创业、自由职业/SOHO。<br />自由开发者 → 独立产品开发 → 创业公司创始人
+    details: 也是创业、自由职业/SOHO。<br/>自由开发者 → 独立产品开发 → 创业公司创始人
     icon: 🚀💡💻
     link: /one/path
     linkText: 探索更多   
