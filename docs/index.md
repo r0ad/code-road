@@ -34,7 +34,7 @@ features:
     link: /cross/path
     linkText: 探索更多      
   - title: 一人公司
-    details: 也是创业、自由职业/SOHO。<br/>自由开发者 → 独立产品开发 → 创业公司创始人
+    details: 也是创业、自由职业/SOHO。<br/>自由开发者|独立产品开发|创业公司创始人|更多
     icon: 🚀💡💻
     link: /one/path
     linkText: 探索更多   
