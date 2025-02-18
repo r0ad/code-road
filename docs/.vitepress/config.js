@@ -71,6 +71,11 @@ export default defineConfig(
       mermaid,
       themeConfig: {
         logo: '/faviconsmall.webp',
+        // 添加 GitHub 编辑链接配置
+        editLink: {
+          pattern: 'https://github.com/r0ad/code-road/edit/master/docs/:path',
+          text: '在 GitHub 上编辑此页'
+        },
         search: {
           provider: 'local',
           options: {
