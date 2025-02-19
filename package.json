@@ -8,7 +8,8 @@
     "build": "vitepress build docs",
     "preview": "vitepress preview docs",
     "preinstall": "npx only-allow pnpm",
-    "type": "vue-tsc --noEmit"
+    "type": "vue-tsc --noEmit",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@vue/repl": "^4.3.1",
@@ -17,6 +18,8 @@
     "gsap": "^3.12.5"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.2.1",
+    "@commitlint/config-conventional": "^19.1.0",
     "@nolebase/vitepress-plugin-enhanced-readabilities": "^2.5.0",
     "@types/body-scroll-lock": "^3.1.2",
     "@types/markdown-it": "^14.1.1",
@@ -28,7 +31,8 @@
     "vitepress-plugin-mermaid": "^2.0.17",
     "vitepress-sidebar": "^1.27.0",
     "vue": "^3.5.0",
-    "vue-tsc": "^2.0.29"
+    "vue-tsc": "^2.0.29",
+    "husky": "^9.0.11"
   },
   "packageManager": "pnpm@9.10.0"
 }
