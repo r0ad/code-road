@@ -1,7 +1,6 @@
 import { defineConfig } from 'vitepress'
 import { generateSidebar } from 'vitepress-sidebar'
 import { withI18n } from 'vitepress-i18n'
-import { withMermaid } from 'vitepress-plugin-mermaid'
 
 /**
  * 多语言配置
@@ -45,19 +44,10 @@ const viteConfig = {
   }
 }
 
-// mermaid config
-
-const mermaid = {
-  theme: {
-    light: 'default',
-    dark: 'dark'
-  }
-}
-
 // https://vitepress.dev/reference/site-config
 export default defineConfig(
   withI18n(
-    withMermaid({
+    {
       title: '编程之路',
       description: '来自程序员nine的探索与实践，持续迭代中。',
       srcDir: '',
@@ -68,7 +58,35 @@ export default defineConfig(
       metaChunk: true,
       // base: '/code-road/',
       vite: viteConfig,
-      mermaid,
+      head: [
+        [
+          'link',
+          {
+            rel: 'stylesheet',
+            href: 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.css'
+          }
+        ],
+        [
+          'script',
+          {
+            src: 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js'
+          }
+        ]
+      ],
+      markdown: {
+        config: (md) => {
+          const defaultFence = md.renderer.rules.fence;
+          md.renderer.rules.fence = (tokens, idx, options, env, self) => {
+            const token = tokens[idx];
+            const info = token.info.trim();
+            if (info === 'mermaid') {
+              const code = token.content;
+              return `<pre class="mermaid">${code}</pre>`;
+            }
+            return defaultFence(tokens, idx, options, env, self);
+          };
+        }
+      },
       themeConfig: {
         logo: '/faviconsmall.webp',
         // 添加 GitHub 编辑链接配置
@@ -126,7 +144,7 @@ export default defineConfig(
           copyright: '© <a href="https://github.com/r0ad">r0ad</a>'
         }
       }
-    }),
+    },
     {
       locales: defineSupportLocales,
       rootLocale: defaultLocale

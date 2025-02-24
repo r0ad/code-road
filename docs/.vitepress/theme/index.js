@@ -9,7 +9,9 @@ import {
 } from '@nolebase/vitepress-plugin-enhanced-readabilities/client'
 
 import '@nolebase/vitepress-plugin-enhanced-readabilities/client/style.css'
-
+import DefaultTheme from 'vitepress/theme'
+import { onMounted, watch, nextTick } from 'vue'
+import { useRoute } from 'vitepress'
 
 export default {
   ...Theme,
@@ -25,5 +27,25 @@ export default {
   },
   enhanceApp({ app, router, siteData }) {
     // ...
+  },
+  setup() {
+    const route = useRoute()
+    const initMermaid = () => {
+      window.mermaid?.init({
+        theme: {
+          light: 'default',
+          dark: 'dark'
+        }
+      }, document.querySelectorAll('.mermaid'))
+    }
+
+    onMounted(() => {
+      initMermaid()
+    })
+
+    watch(
+      () => route.path,
+      () => nextTick(() => initMermaid())
+    )
   }
 }
