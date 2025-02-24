@@ -148,8 +148,8 @@ export default defineConfig(
           { icon: 'github', link: 'https://github.com/r0ad/code-road' }
         ],
         footer: {
-          message: "a coder's try ",
-          copyright: '© <a href="https://github.com/r0ad">r0ad</a>'
+          message: '编码之路无涯 · 砥砺前行不辍',
+          copyright: '© 2025-PRESENT <a href="https://github.com/r0ad">r0ad</a>'
         }
       }
     },
