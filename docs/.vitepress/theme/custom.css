@@ -8,3 +8,8 @@
 .container .items .item .box .icon {
   width: 45%;
 }
+
+.VPFooter {
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
+}

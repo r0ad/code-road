@@ -1,12 +1,6 @@
 <template>
   <div class="busuanzi-container">
     <div class="counter-item">
-      <span class="icon">👁️</span>
-      <span id="busuanzi_container_site_pv" style="display: inline">
-        总访问量 <span id="busuanzi_value_site_pv" class="counter-number"></span> 次
-      </span>
-    </div>
-    <div class="counter-item">
       <span class="icon">👤</span>
       <span id="busuanzi_container_site_uv" style="display: inline">
         访客数 <span id="busuanzi_value_site_uv" class="counter-number"></span> 人
@@ -21,7 +15,7 @@
   gap: 2rem;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
+  padding: 0.1rem;
   font-size: 0.9rem;
   color: var(--vp-c-text-2);
 }
