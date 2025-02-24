@@ -64,13 +64,13 @@ export default defineConfig(
           'link',
           {
             rel: 'stylesheet',
-            href: 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.css'
+            href: '/css/mermaid.min.css'
           }
         ],
         [
           'script',
           {
-            src: 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js'
+            src: 'https://unpkg.com/mermaid@11.4.1/dist/mermaid.min.js'
           }
         ]
       ],
