@@ -12,6 +12,7 @@ import '@nolebase/vitepress-plugin-enhanced-readabilities/client/style.css'
 import DefaultTheme from 'vitepress/theme'
 import { onMounted, watch, nextTick } from 'vue'
 import { useRoute } from 'vitepress'
+import Layout from './Layout.vue'
 
 export default {
   ...Theme,
@@ -47,5 +48,6 @@ export default {
       () => route.path,
       () => nextTick(() => initMermaid())
     )
-  }
+  },
+  Layout
 }

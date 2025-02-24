@@ -72,6 +72,13 @@ export default defineConfig(
           {
             src: 'https://unpkg.com/mermaid@11.4.1/dist/mermaid.min.js'
           }
+        ],
+        [
+          'script',
+          {
+            async: true,
+            src: 'https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js'
+          }
         ]
       ],
       markdown: {
