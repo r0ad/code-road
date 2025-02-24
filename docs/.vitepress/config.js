@@ -26,7 +26,8 @@ const commonSidebarConfig = {
   useTitleFromFileHeading: true,
   // frontmatterTitleFieldName: 'title',
   useFolderTitleFromIndexFile: true,
-  debugPrint: true
+  debugPrint: true,
+  manualSortFileNameByPriority: ['path.md']
 }
 
 /**
