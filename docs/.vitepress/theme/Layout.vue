@@ -7,7 +7,7 @@ const { Layout } = DefaultTheme
 
 <template>
   <Layout>
-    <template #layout-bottom>
+    <template #nav-bar-title-after>
       <BusuanziCounter />
     </template>
   </Layout>

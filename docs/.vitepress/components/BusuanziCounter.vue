@@ -1,37 +1,81 @@
 <template>
-  <div class="busuanzi-container">
-    <div class="counter-item">
-      <span class="icon">👤</span>
-      <span id="busuanzi_container_site_uv" style="display: inline">
-        访客数 <span id="busuanzi_value_site_uv" class="counter-number"></span> 人
-      </span>
-    </div>
-  </div>
+  <span id="busuanzi_container_site_uv" class="visitor-badge">
+    <span class="label">访问</span>
+    <span class="count">
+      <span id="busuanzi_value_site_uv"></span>
+    </span>
+  </span>
 </template>
 
+<script setup>
+
+</script>
+
 <style scoped>
-.busuanzi-container {
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
-  align-items: center;
-  padding: 0.1rem;
-  font-size: 0.9rem;
-  color: var(--vp-c-text-2);
+.visitor-badge {
+  display: inline-flex;
+  margin: 0 auto;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
+              0 1px 2px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.counter-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+.visitor-badge:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12),
+              0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
-.icon {
-  font-size: 1.2rem;
+.label {
+  padding: 0.15rem 0.6rem;
+  background: linear-gradient(145deg, #777, #444);
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
 }
 
-.counter-number {
-  color: var(--vp-c-brand);
-  font-weight: 600;
+.label::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, 
+              rgba(255, 255, 255, 0.1) 0%,
+              rgba(255, 255, 255, 0) 50%);
+}
+
+.count {
+  padding: 0.15rem 0.6rem;
+  background: linear-gradient(145deg, #0095ed, #0066a8);
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  font-weight: 500;
+  position: relative;
+}
+
+.count::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, 
+              rgba(255, 255, 255, 0.15) 0%,
+              rgba(255, 255, 255, 0) 50%);
+}
+
+@media (min-width: 768px) and (max-width: 920px) {
+  .visitor-badge {
+    display: none;
+  }
 }
 </style> 
