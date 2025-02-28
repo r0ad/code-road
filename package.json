@@ -9,9 +9,14 @@
     "preview": "vitepress preview docs",
     "preinstall": "npx only-allow pnpm",
     "type": "vue-tsc --noEmit",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "packages:build": "pnpm -r --filter=\"./packages/**\" build"
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "dependencies": {
+    "@code-road/busuanzi-counter": "workspace:*",
     "@vue/repl": "^4.3.1",
     "@vue/theme": "^2.2.13",
     "dynamics.js": "^1.1.5",

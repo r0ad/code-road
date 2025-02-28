@@ -9,6 +9,10 @@ import { onMounted, watch, nextTick } from 'vue'
 import { useRoute } from 'vitepress'
 import Layout from './Layout.vue'
 
+// 导入不蒜子计数器组件
+import BusuanziCounter from '@code-road/busuanzi-counter'
+import '@code-road/busuanzi-counter/style'
+
 export default {
   ...Theme,
   Layout: () => {
@@ -18,7 +22,8 @@ export default {
     })
   },
   enhanceApp({ app, router, siteData }) {
-    // ...
+    // 注册不蒜子计数器组件
+    app.use(BusuanziCounter)
   },
   setup() {
     const route = useRoute()
