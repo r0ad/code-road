@@ -79,4 +79,4 @@ pnpm publish --access public
 
 3. **如何显示页面浏览量而不是访客数？**
    - 修改组件中的 `busuanzi_container_site_uv` 为 `busuanzi_container_site_pv`
-   - 修改组件中的 `busuanzi_value_site_uv` 为 `busuanzi_value_site_pv` 
+   - 修改组件中的 `busuanzi_value_site_uv` 为 `busuanzi_value_site_pv`

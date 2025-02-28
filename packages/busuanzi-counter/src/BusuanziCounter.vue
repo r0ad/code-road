@@ -2,7 +2,7 @@
   <span id="busuanzi_container_site_uv" class="visitor-badge" v-show="scriptLoaded">
     <span class="label">访问</span>
     <span class="count">
-      <span id="busuanzi_value_site_uv"></span>
+      <span id="busuanzi_value_site_pv"></span>
     </span>
   </span>
 </template>
