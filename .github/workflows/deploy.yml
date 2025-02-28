@@ -41,10 +41,10 @@ jobs:
           cache: pnpm # 或 pnpm / yarn
       - name: Setup Pages
         uses: actions/configure-pages@v4
-      - name: packages build
-        run: pnpm packages:build       
       - name: Install dependencies
         run: pnpm install # 或 pnpm install / yarn install / bun install
+      - name: packages build
+        run: pnpm packages:build        
       - name: Build with VitePress
         run: pnpm build # 或 pnpm docs:build / yarn docs:build / bun run docs:build
       - name: Upload artifact
