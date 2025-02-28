@@ -16,8 +16,11 @@ export default {
       scriptUrl: 'https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js'
     }
   },
+  // 使用 client-only 标记，确保只在客户端执行
   mounted() {
-    this.loadBusuanziScript()
+    if (typeof window !== 'undefined') {
+      this.loadBusuanziScript()
+    }
   },
   methods: {
     loadBusuanziScript() {

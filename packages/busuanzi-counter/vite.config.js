@@ -6,9 +6,12 @@ export default defineConfig({
   plugins: [vue()],
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/index.js'),
-      name: 'BusuanziCounter',
-      fileName: (format) => `index.${format === 'es' ? 'js' : format}`
+      entry: {
+        index: resolve(__dirname, 'src/index.js'),
+        client: resolve(__dirname, 'src/client.js')
+      },
+      formats: ['es', 'cjs'],
+      fileName: (format, entryName) => `${entryName}.${format === 'es' ? 'js' : format}`
     },
     rollupOptions: {
       external: ['vue'],
