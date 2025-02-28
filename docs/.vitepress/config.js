@@ -122,6 +122,7 @@ export default defineConfig(
         nav: [
           { text: '首页', link: '/' },
           { text: '规划', link: '/plan' },
+          { text: 'AI导航站', link: 'http://nav.r0ad.cc/' },
           { text: '关于', link: '/about' }
         ],
         sidebar: generateSidebar([
