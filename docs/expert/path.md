@@ -38,15 +38,15 @@ mindmap
 
 ### 工程师进阶
 
-- [初级工程师](./junior-engineer.md) - 打好技术基础的起点
-- [中级工程师](./mid-engineer.md) - 技术深度的提升期
-- [高级工程师](./senior-engineer.md) - 技术方案的设计者
+- [初级工程师](./01junior-engineer.md) - 打好技术基础的起点
+- [中级工程师](./02mid-engineer.md) - 技术深度的提升期
+- [高级工程师](./03senior-engineer.md) - 技术方案的设计者
 
 ### 专家进阶
 
-- [技术专家](./tech-expert.md) - 领域技术的探索者
-- [架构师](./architect.md) - 系统架构的设计师
-- [领域专家](./domain-expert.md) - 技术与业务的融合者
+- [技术专家](./04tech-expert.md) - 领域技术的探索者
+- [架构师](./05architect.md) - 系统架构的设计师
+- [领域专家](./06domain-expert.md) - 技术与业务的融合者
 
 ## 💡 核心能力要求
 
