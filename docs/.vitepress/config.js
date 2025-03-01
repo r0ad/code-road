@@ -116,7 +116,7 @@ const baseConfig = {
 const enhancedConfig = withMermaidRenderer(baseConfig, {
   useCDN: true,
   cdnURL: 'https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js',
-  inlineCSS: false,
+  inlineCSS: true,
   mermaid: {
     theme: 'default'
   }

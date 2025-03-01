@@ -48,6 +48,40 @@ graph TD
 ```
 ````
 
+## 手动触发渲染
+
+在某些情况下，特别是在页面刷新时，可能需要手动触发 Mermaid 图表的渲染。这个包提供了一个辅助函数来解决这个问题：
+
+```js
+import { renderMermaidDiagrams } from '@code-road/mermaid-renderer'
+
+// 在 Vue 组件中使用
+import { onMounted } from 'vue'
+
+export default {
+  setup() {
+    onMounted(() => {
+      // 手动触发 Mermaid 图表渲染
+      renderMermaidDiagrams()
+    })
+  }
+}
+```
+
+你也可以在特定事件或条件下调用这个函数，例如：
+
+```js
+// 在页面加载完成后触发
+window.addEventListener('load', () => {
+  renderMermaidDiagrams()
+})
+
+// 或者在自定义事件中触发
+document.addEventListener('my-custom-event', () => {
+  renderMermaidDiagrams()
+})
+```
+
 ## 配置选项
 
 ### `useCDN`
@@ -83,6 +117,7 @@ Mermaid 库的配置选项。详细配置请参考 [Mermaid 官方文档](https:
 1. 服务器端渲染模式（`useCDN: false`）可能会遇到一些限制，因为 Mermaid 库依赖于浏览器环境。
 2. 如果你的图表很复杂，建议使用客户端渲染模式（`useCDN: true`）。
 3. 如果你使用暗黑模式，图表会自动适应主题。
+4. 如果在页面刷新时图表不显示，可以尝试使用 `renderMermaidDiagrams` 函数手动触发渲染。
 
 ## 许可证
 

@@ -23,7 +23,7 @@ export function withMermaidRenderer(config = {}, options = {}) {
   
   // 合并选项
   const mergedOptions = { ...defaultOptions, ...options }
-  const mermaidConfig = config.mermaid || {}
+  const mermaidConfig = options.mermaid || {}
   
   // 保存原始的 head 配置
   const originalHead = config.head || []
@@ -49,7 +49,9 @@ export function withMermaidRenderer(config = {}, options = {}) {
     newHead.push([
       'script',
       {
-        src: mergedOptions.cdnURL
+        src: mergedOptions.cdnURL,
+        // 添加 defer 属性确保脚本在 DOM 解析完成后执行
+        defer: true
       }
     ])
   }
@@ -133,4 +135,24 @@ export function withMermaidRenderer(config = {}, options = {}) {
     head: newHead,
     markdown: newMarkdown
   }
+}
+
+/**
+ * 手动触发 Mermaid 图表渲染的辅助函数
+ * 可以在 VitePress 应用中使用，例如在特定页面加载后调用
+ * @example
+ * // 在 VitePress 页面中使用
+ * import { renderMermaidDiagrams } from '@code-road/mermaid-renderer'
+ * 
+ * // 在 onMounted 钩子中调用
+ * onMounted(() => {
+ *   renderMermaidDiagrams()
+ * })
+ */
+export function renderMermaidDiagrams() {
+  if (typeof window !== 'undefined' && window.renderMermaidDiagrams) {
+    window.renderMermaidDiagrams()
+    return true
+  }
+  return false
 } 
