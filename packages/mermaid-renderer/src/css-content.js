@@ -26,6 +26,22 @@ export const cssContent = `
   height: auto;
 }
 
+.mermaid-error {
+  color: #e53e3e;
+  padding: 1em;
+  border: 1px solid #e53e3e;
+  border-radius: 4px;
+  background-color: #fff5f5;
+  text-align: center;
+  margin: 1em 0;
+}
+
+html.dark .mermaid-error {
+  color: #fc8181;
+  background-color: #2d3748;
+  border-color: #fc8181;
+}
+
 /* 暗黑模式样式 */
 html.dark .mermaid .label {
   color: #f8f8f2;

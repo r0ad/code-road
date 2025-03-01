@@ -56,6 +56,11 @@ export const clientScript = `
   
   // 定义渲染所有 Mermaid 图表的函数
   function renderAllMermaidDiagrams() {
+    if (typeof window.mermaid === 'undefined') {
+      console.warn('Mermaid 库尚未加载，无法渲染图表');
+      return;
+    }
+    
     document.querySelectorAll('.mermaid').forEach(function(element) {
       try {
         // 检查元素是否已经渲染过
@@ -65,12 +70,39 @@ export const clientScript = `
             .then(function(result) {
               element.innerHTML = result.svg;
               element.setAttribute('data-processed', 'true');
+            })
+            .catch(function(error) {
+              console.error('Mermaid 渲染错误:', error);
+              element.innerHTML = '<div class="mermaid-error">图表渲染失败</div>';
             });
         }
       } catch (error) {
         console.error('Mermaid 渲染错误:', error);
       }
     });
+  }
+  
+  // 尝试加载 Mermaid 库（如果尚未加载）
+  function loadMermaidIfNeeded() {
+    if (typeof window.mermaid === 'undefined') {
+      // 检查是否已经有 mermaid 脚本正在加载
+      if (!document.querySelector('script[data-mermaid-loader="true"]')) {
+        const script = document.createElement('script');
+        script.src = '/js/mermaid.min.js';
+        script.defer = true;
+        script.setAttribute('data-mermaid-loader', 'true');
+        script.onload = function() {
+          console.log('Mermaid 库已成功加载');
+          tryInitMermaid();
+        };
+        script.onerror = function() {
+          console.error('无法加载 Mermaid 库');
+        };
+        document.head.appendChild(script);
+      }
+    } else {
+      tryInitMermaid();
+    }
   }
   
   // 尝试初始化 Mermaid
@@ -84,6 +116,9 @@ export const clientScript = `
         attempts++;
         if (initMermaid() || attempts >= maxAttempts) {
           clearInterval(checkInterval);
+          if (attempts >= maxAttempts && typeof window.mermaid === 'undefined') {
+            console.warn('Mermaid 初始化超时，请检查库是否正确加载');
+          }
         }
       }, 200);
     }
@@ -94,13 +129,30 @@ export const clientScript = `
   
   // 等待 DOM 加载完成
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', tryInitMermaid);
+    document.addEventListener('DOMContentLoaded', function() {
+      // 检查 mermaid 是否已加载，如果没有则尝试加载
+      if (typeof window.mermaid === 'undefined') {
+        loadMermaidIfNeeded();
+      } else {
+        tryInitMermaid();
+      }
+    });
   } else {
     // 如果 DOM 已加载完成，立即尝试初始化
-    tryInitMermaid();
+    if (typeof window.mermaid === 'undefined') {
+      loadMermaidIfNeeded();
+    } else {
+      tryInitMermaid();
+    }
   }
   
   // 页面完全加载后再次尝试渲染，确保所有资源都已加载
-  window.addEventListener('load', tryInitMermaid);
+  window.addEventListener('load', function() {
+    if (typeof window.mermaid === 'undefined') {
+      loadMermaidIfNeeded();
+    } else {
+      tryInitMermaid();
+    }
+  });
 })();
 ` 

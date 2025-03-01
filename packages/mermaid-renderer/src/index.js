@@ -1,5 +1,6 @@
 import { JSDOM } from 'jsdom'
 import mermaid from 'mermaid'
+import DOMPurify from 'dompurify'
 import { clientScript } from './client-script'
 import { cssContent } from './css-content'
 
@@ -54,6 +55,16 @@ export function withMermaidRenderer(config = {}, options = {}) {
         defer: true
       }
     ])
+  } else {
+    // 如果不使用 CDN，添加内联的 mermaid 脚本
+    // 这里我们直接引入 mermaid 库的 ESM 版本
+    newHead.push([
+      'script',
+      {
+        src: '/js/mermaid.min.js',
+        defer: true
+      }
+    ])
   }
   
   // 添加客户端初始化脚本
@@ -84,38 +95,9 @@ export function withMermaidRenderer(config = {}, options = {}) {
         // 如果是 mermaid 代码块
         if (info === 'mermaid') {
           try {
-            // 如果不使用 CDN，尝试在服务器端渲染
-            if (!mergedOptions.useCDN) {
-              // 创建一个虚拟的 DOM 环境
-              const dom = new JSDOM('<!DOCTYPE html><html><body></body></html>')
-              global.document = dom.window.document
-              global.window = dom.window
-              
-              // 初始化 mermaid 配置
-              mermaid.initialize({
-                startOnLoad: false,
-                theme: 'default',
-                ...mermaidConfig,
-                securityLevel: 'loose'
-              })
-              
-              // 创建一个容器元素
-              const container = dom.window.document.createElement('div')
-              container.id = `mermaid-${idx}`
-              dom.window.document.body.appendChild(container)
-              
-              // 渲染 mermaid 图表
-              const { svg } = mermaid.mermaidAPI.render(`mermaid-${idx}`, token.content)
-              
-              // 清理全局对象
-              delete global.document
-              delete global.window
-              
-              return `<div class="mermaid-svg">${svg}</div>`
-            } else {
-              // 使用 CDN 时，返回客户端渲染的标记
-              return `<pre class="mermaid">${token.content}</pre>`
-            }
+            // 无论是否使用 CDN，都返回客户端渲染的标记
+            // 这样可以避免在服务器端渲染时出现 document is not defined 错误
+            return `<pre class="mermaid">${token.content}</pre>`
           } catch (error) {
             console.error('Mermaid 渲染错误:', error)
             // 渲染失败时，回退到客户端渲染

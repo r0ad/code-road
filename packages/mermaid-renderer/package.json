@@ -1,6 +1,6 @@
 {
   "name": "@code-road/mermaid-renderer",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "在构建时将 Markdown 中的 Mermaid 图表渲染为静态内容",
   "type": "module",
   "main": "dist/index.js",
@@ -22,6 +22,7 @@
   "author": "code-road",
   "license": "MIT",
   "dependencies": {
+    "dompurify": "^3.0.9",
     "jsdom": "^24.0.0",
     "mermaid": "^11.4.1"
   },

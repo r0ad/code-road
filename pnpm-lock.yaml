@@ -79,6 +79,9 @@ importers:
 
   packages/mermaid-renderer:
     dependencies:
+      dompurify:
+        specifier: ^3.0.9
+        version: 3.2.4
       jsdom:
         specifier: ^24.0.0
         version: 24.1.3
