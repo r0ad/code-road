@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vitepress dev docs",
-    "build": "vitepress build docs",
+    "build": "pnpm packages:build && vitepress build docs",
     "preview": "vitepress preview docs",
     "preinstall": "npx only-allow pnpm",
     "type": "vue-tsc --noEmit",
@@ -17,6 +17,7 @@
   ],
   "dependencies": {
     "@code-road/busuanzi-counter": "workspace:*",
+    "@code-road/mermaid-renderer": "workspace:*",
     "@vue/repl": "^4.3.1",
     "@vue/theme": "^2.2.13",
     "dynamics.js": "^1.1.5",
