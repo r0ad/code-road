@@ -52,7 +52,9 @@ export function withMermaidRenderer(config = {}, options = {}) {
       {
         src: mergedOptions.cdnURL,
         // 添加 defer 属性确保脚本在 DOM 解析完成后执行
-        defer: true
+        defer: true,
+        // 添加标记，表示使用 CDN
+        'data-use-cdn': 'true'
       }
     ])
   } else {
@@ -62,7 +64,9 @@ export function withMermaidRenderer(config = {}, options = {}) {
       'script',
       {
         src: '/js/mermaid.min.js',
-        defer: true
+        defer: true,
+        // 添加标记，表示不使用 CDN
+        'data-use-cdn': 'false'
       }
     ])
   }

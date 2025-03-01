@@ -3,6 +3,9 @@
  */
 export const clientScript = `
 (function() {
+  // 检查是否使用 CDN
+  const useCDN = document.querySelector('script[src*="mermaid"][data-use-cdn="true"]') !== null;
+  
   // 定义初始化函数
   function initMermaid() {
     // 检查 mermaid 是否已加载
@@ -84,7 +87,8 @@ export const clientScript = `
   
   // 尝试加载 Mermaid 库（如果尚未加载）
   function loadMermaidIfNeeded() {
-    if (typeof window.mermaid === 'undefined') {
+    // 只有在 useCDN 为 false 且 mermaid 未加载时才加载本地库
+    if (!useCDN && typeof window.mermaid === 'undefined') {
       // 检查是否已经有 mermaid 脚本正在加载
       if (!document.querySelector('script[data-mermaid-loader="true"]')) {
         const script = document.createElement('script');
